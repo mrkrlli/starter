@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
+from . import views
+
 admin.autodiscover()
 
 urlpatterns = patterns(__package__ + '.views',
@@ -8,3 +10,4 @@ urlpatterns = patterns(__package__ + '.views',
     url(r'^movie_list/', views.movie_list, name='movie_list'),
     url(r'^admin/', include(admin.site.urls)),
 )
+	
