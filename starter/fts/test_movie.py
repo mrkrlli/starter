@@ -20,6 +20,24 @@ class TestMovieListPage(FunctionalTest):
 
 
 
+class TestMovieDetailsPage(FunctionalTest):
+
+    def setUp(self):
+        self.url = root_url + 'movie_details/771390242' #deadpool movie id
+        get_browser=self.browser.get(self.url)
+
+
+    def test_movie_details_page_response_code(self):
+        #test that movie_list page exists and returns the proper response code
+        r = requests.get(self.url)
+        self.assertEqual(r.status_code, 200)
+
+    def test_movie_details_page_information(self):
+    	#test that this page shows the details for the deadpool movie
+    	movie_title = self.browser.find_element_by_css_selector('h3.movie_title')
+    	self.assertEqual(movie_title.text, "Deadpool")
+
+
         
 
     
