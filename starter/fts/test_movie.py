@@ -37,6 +37,13 @@ class TestMovieDetailsPage(FunctionalTest):
     	movie_title = self.browser.find_element_by_css_selector('h3.movie_title')
     	self.assertEqual(movie_title.text, "Deadpool")
 
+    	#test that actors and characters are displayed
+    	members = self.browser.find_elements_by_css_selector('li.movie_members')
+    	self.assertEqual(len(members), 5)
+
+
+
+
 
         
 
