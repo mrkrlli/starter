@@ -18,9 +18,17 @@ class TestMovieListPage(FunctionalTest):
         movie_list_items = self.browser.find_elements_by_css_selector('li.movie_item')
         self.assertEqual(len(movie_list_items), 200)
 
+    def test_movie_list_page_click_detail_link(self):
+    	#test that clicking a movie detail link will take you to the appropriate movie detail link page
+		
+		#this will click the first movie item, which should be Deadpool
+    	movie_items = self.browser.find_elements_by_css_selector('li.movie_item a')
+    	movie_items[0].click()
+
+    	self.assertEqual(self.browser.current_url, root_url + 'movie_details/771390242')
 
 
-class TestMovieDetailsPage(FunctionalTest):
+class TestMovieListPagestMovieDetailsPage(FunctionalTest):
 
     def setUp(self):
         self.url = root_url + 'movie_details/771390242' #deadpool movie id

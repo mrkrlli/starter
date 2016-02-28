@@ -4,7 +4,9 @@
 <h3>Movie List</h3>
 	<ul>
 		{% for movie in movie_list %}
-		<li class="movie_item">{{movie.title}}</li>	
+		<li class="movie_item">
+			<a href="{% url 'movie_details' movie.id %}">{{movie.title}}</a>
+		</li>	
 		{% endfor%}
 	</ul>
 {% endblock %}
