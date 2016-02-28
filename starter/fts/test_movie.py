@@ -1,6 +1,23 @@
 from tests import FunctionalTest, root_url
 import requests
 
+class TestLandingPage(FunctionalTest):
+
+	def setUp(self):
+		self.url = root_url
+		get_browser=self.browser.get(self.url)
+    
+	def test_land_page_response_code(self):
+		#test that landing page exists and returns the proper response code
+		r = requests.get(self.url)
+		self.assertEqual(r.status_code, 200)
+
+	def test_landing_page_movie_list_link(self):
+		#test that landing page will have a link to the movie list page
+		movie_list_link = self.browser.find_element_by_css_selector('#movie_list_link')
+		movie_list_link.click()
+
+		self.assertEqual(self.browser.current_url, root_url + 'movie_list/')
 
 class TestMovieListPage(FunctionalTest):
 
@@ -36,7 +53,7 @@ class TestMovieListPagestMovieDetailsPage(FunctionalTest):
 
 
     def test_movie_details_page_response_code(self):
-        #test that movie_list page exists and returns the proper response code
+        #test that movie details page exists and returns the proper response code
         r = requests.get(self.url)
         self.assertEqual(r.status_code, 200)
 
